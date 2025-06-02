@@ -1,14 +1,13 @@
 package io.github;
 
-public class Division implements Arithmetic{
+public class Modulus implements Arithmetic {
 
     @Override
-    public float calculate(float a, float b) {
+    public float calculate(float a, float b){
         if (b == 0) {
             throw new ArithmeticException("Division by zero!");
         }
         
-        return a / b;
+        return a % b;
     }
-    
 }

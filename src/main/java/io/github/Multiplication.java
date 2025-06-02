@@ -1,22 +1,11 @@
 package io.github;
 
-public class Multiplication {
+public class Multiplication implements Arithmetic{
 
-    private float a;
-    private float b;
-    private float result;
-    private String operation;
+    @Override
+    public float calculate(float a, float b) {
 
-    public Multiplication(int a, int b) {
-        this.a = a;
-        this.b = b;
-        this.result = a * b;
-        this.operation = "Multiplication";
-    }
-
-    public float getResult() {
-        System.out.println("Performing " + operation + ": " + a + " * " + b + " = " + result);
-        return result;
+        return a * b;
     }
     
 }

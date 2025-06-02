@@ -1,22 +1,12 @@
 package io.github;
 
-public class Subtraction {
+public class Subtraction implements Arithmetic{
 
-    private float a;
-    private float b;
-    private float result;
-    private String operation;
-
-    public Subtraction(int a, int b) {
-        this.a = a;
-        this.b = b;
-        this.result = a - b;
-        this.operation = "Subtraction";
+    @Override
+    public float calculate(float a, float b) {
+      
+        return a - b;
     }
 
-    public float getResult() {
-        System.out.println("Performing " + operation + ": " + a + " - " + b + " = " + result);
-        return result;
-    }
     
 }

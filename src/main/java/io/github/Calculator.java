@@ -1,48 +1,31 @@
 package io.github;
 
-public class Calculator {
-    
-    private Addition addition;
-    private Subtraction subtraction;
-    private Multiplication multiplication;
-    private Division division;
-    private float result;
-    private float a;
-    private float b;
-    private String operation;
-    
-    public Calculator(float a, float b, String operation) {
-        this.a = a;
-        this.b = b;
-        this.operation = operation;
+import java.util.HashMap;
+import java.util.Map;
 
-        switch (operation.toLowerCase()) {
-            case "addition":
-                this.addition = new Addition((int) a, (int) b);
-                this.result = addition.getResult();
-                break;
-            case "subtraction":
-                this.subtraction = new Subtraction((int) a, (int) b);
-                this.result = subtraction.getResult();
-                break;
-            case "multiplication":
-                this.multiplication = new Multiplication((int) a, (int) b);
-                this.result = multiplication.getResult();
-                break;
-            case "division":
-                this.division = new Division((int) a, (int) b);
-                this.result = division.getResult();
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid operation: " + operation);
+public class Calculator {
+    private static final Map<String, Arithmetic> operations = new HashMap<>();
+
+    static {
+        operations.put("addition", new Addition());
+        operations.put("subtraction", new Subtraction());
+        operations.put("multiplication", new Multiplication());
+        operations.put("division", new Division());
+        operations.put("exponentiation", new Exponentiation());
+        operations.put("modulus", new Modulus());
+    }
+
+    private final float result;
+
+    public Calculator(float a, float b, String operation) {
+        Arithmetic arithmeticOp = operations.get(operation.toLowerCase());
+        if (arithmeticOp == null) {
+            throw new IllegalArgumentException("Invalid operation: " + operation);
         }
+        this.result = arithmeticOp.calculate(a, b);
     }
 
     public float getResult() {
-        System.out.println("Result of " + operation + " operation: " + result);
-        System.out.println();
         return result;
-
     }
-
 }

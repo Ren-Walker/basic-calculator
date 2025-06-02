@@ -1,24 +1,11 @@
 package io.github;
 
-public class Addition {
+public class Addition implements Arithmetic {
     
-    private float a;
-    private float b;
-    private float result;
-    private String operation;
+    @Override
+    public float calculate(float a, float b) {
 
-    public Addition(int a, int b) {
-        this.a = a;
-        this.b = b;
-        this.result = a + b;
-        this.operation = "Addition";
+        return a + b;
     }
-
-    public float getResult() {
-        System.out.println( "Performing " + operation + ": " + a + " + " + b + " = " + result );
-
-        return result;
-    }
-
 
 }
